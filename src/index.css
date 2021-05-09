@@ -11,8 +11,21 @@ body {
   padding: 0;
   font-family: 'Alegreya Sans', sans-serif;
 }
-header{
-  font-size: 3rem;
+
+.logo{
+  padding: 0 10px;
+  border-radius: 25%;
+  background-color: white;
+  color: black;
+  font-size: 1.4rem;
+}
+
+main > .container{
+  width: 500px
+}
+
+.card-logo{
+  font-size: 5rem;
 }
 footer{
   background-color: black;
@@ -24,5 +37,4 @@ footer{
   height: 50px;
   text-align: center;
   padding-top: 15px;
-
 }
