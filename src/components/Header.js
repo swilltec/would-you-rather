@@ -36,7 +36,7 @@ export const Header = ({ page }) => {
               </li>
               <li className="nav-item">
                 <Link
-                  to="/"
+                  to="/create-question"
                   className={
                     page === "question" ? "active nav-link" : "nav-link"
                   }

@@ -13,13 +13,13 @@ export default class Poll extends Component {
             <div class="card" style={{maxWidth: "540px"}}>
               <div class="card-header text-center">User ask</div>
               <div class="row g-0">
-                <div className="col-md-3 pt-1">
+                <div className="col-4 pt-1">
                   <img
                     src="https://randomuser.me/api/portraits/women/52.jpg"
                     alt="..."
                   />
                 </div>
-                <div className="col-md-9">
+                <div className="col-8">
                   <div class="card-body">
                     <form>
                       would you rather
@@ -36,6 +36,7 @@ export default class Poll extends Component {
                             for="flexRadioDefault1"
                           >
                             Default radio
+
                           </label>
                         </div>
                         <div class="form-check">

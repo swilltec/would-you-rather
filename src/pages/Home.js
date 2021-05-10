@@ -61,7 +61,7 @@ export default class Home extends Component {
                             With supporting text below as a natural lead-in to
                             additional content.
                           </p>
-                          <a href="#" class="btn btn-primary">
+                          <a href="##" class="btn btn-primary">
                             View Poll
                           </a>
                         </div>
@@ -71,7 +71,7 @@ export default class Home extends Component {
 
 
 
-                  
+
                 </div>
                 <div
                   class="tab-pane fade"
