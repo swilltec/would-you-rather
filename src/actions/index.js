@@ -23,11 +23,4 @@ export function receiveUsers(users) {
   };
 }
 
-export function handleInitialData() {
-  return (dispatch) => {
-    return getInitialData().then(({ users, questions }) => {
-      dispatch(receiveQuestions(questions));
-      dispatch(receiveUsers(users));
-    });
-  };
-}
+
