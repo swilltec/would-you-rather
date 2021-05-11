@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Tab } from "semantic-ui-react";
 import UserCard from "../components/UserCard";
-import QuestionCard from "../components/QuestionCard";
 
 export class Home extends Component {
   render() {
@@ -16,45 +15,37 @@ export class Home extends Component {
   };
 }
 
-const panes = (props) => {
+const panes = props => {
   const { userQuestionData } = props;
   return [
     {
-      menuItem: "Unanswered",
+      menuItem: 'Unanswered',
       render: () => (
         <Tab.Pane>
-          {userQuestionData.answered.map((question) => (
+          {userQuestionData.answered.map(question => (
             <UserCard
               key={question.id}
-              userId={question.author}
-              color="#6A5ACD"
-            >
-              <QuestionCard
-                question={question}
-                unanswered={true}
-                color="blue"
-              />
-            </UserCard>
+              question_id={question.id}
+              unanswered={true}
+            />
           ))}
         </Tab.Pane>
-      ),
+      )
     },
     {
-      menuItem: "Answered",
+      menuItem: 'Answered',
       render: () => (
         <Tab.Pane>
-          {userQuestionData.unanswered.map((question) => (
+          {userQuestionData.unanswered.map(question => (
             <UserCard
               key={question.id}
-              userId={question.author}
-              color="#FF4500"
-            >
-              <QuestionCard question={question} unanswered={false} color="" />
-            </UserCard>
+              question_id={question.id}
+              unanswered={false}
+            />
           ))}
         </Tab.Pane>
-      ),
-    },
+      )
+    }
   ];
 };
 
