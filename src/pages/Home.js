@@ -1,92 +1,78 @@
 import React, { Component } from "react";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Tab } from "semantic-ui-react";
+import UserCard from "../components/UserCard";
+import QuestionCard from "../components/QuestionCard";
 
-export default class Home extends Component {
+export class Home extends Component {
   render() {
-    return (
-      <>
-        <Header page="home" />
-        <main className="home">
-          <div className="container mt-5">
-            <div className="card p-2">
-              <nav className="">
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button
-                    class="nav-link active"
-                    id="nav-answered-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-answered"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-answered"
-                    aria-selected="true"
-                  >
-                    Answered
-                  </button>
-                  <button
-                    class="nav-link"
-                    id="nav-unanswered-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#nav-unanswered"
-                    type="button"
-                    role="tab"
-                    aria-controls="nav-unanswered"
-                    aria-selected="false"
-                  >
-                    Unanswered
-                  </button>
-                </div>
-              </nav>
-              <div class="tab-content mt-2" id="nav-tabContent">
-                <div
-                  class="tab-pane fade show active"
-                  id="nav-answered"
-                  role="tabpanel"
-                  aria-labelledby="nav-answered-tab"
-                >
-                  <div class="card">
-                    <div class="card-header text-center">User ask</div>
-                    <div class="row g-0">
-                      <div className="col-3 pt-1">
-                        <img
-                          src="https://randomuser.me/api/portraits/women/52.jpg"
-                          alt="..."
-                        />
-                      </div>
-                      <div className="col-8 offset-1">
-                        <div class="card-body">
-                         
-                          <p class="card-text">
-                            With supporting text below as a natural lead-in to
-                            additional content.
-                          </p>
-                          <a href="##" class="btn btn-primary">
-                            View Poll
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+    const { userQuestionData } = this.props;
 
-
-
-
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="nav-unanswered"
-                  role="tabpanel"
-                  aria-labelledby="nav-unanswered-tab"
-                >
-                  ...
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
+    return <Tab panes={panes({ userQuestionData })} className="tab" />;
   }
+  static propTypes = {
+    userQuestionData: PropTypes.object.isRequired,
+  };
 }
+
+const panes = (props) => {
+  const { userQuestionData } = props;
+  return [
+    {
+      menuItem: "Unanswered",
+      render: () => (
+        <Tab.Pane>
+          {userQuestionData.answered.map((question) => (
+            <UserCard
+              key={question.id}
+              userId={question.author}
+              color="#6A5ACD"
+            >
+              <QuestionCard
+                question={question}
+                unanswered={true}
+                color="blue"
+              />
+            </UserCard>
+          ))}
+        </Tab.Pane>
+      ),
+    },
+    {
+      menuItem: "Answered",
+      render: () => (
+        <Tab.Pane>
+          {userQuestionData.unanswered.map((question) => (
+            <UserCard
+              key={question.id}
+              userId={question.author}
+              color="#FF4500"
+            >
+              <QuestionCard question={question} unanswered={false} color="" />
+            </UserCard>
+          ))}
+        </Tab.Pane>
+      ),
+    },
+  ];
+};
+
+function mapStateToProps({ authUser, users, questions }) {
+  const answeredIds = Object.keys(users[authUser].answers);
+  const answered = Object.values(questions)
+    .filter((question) => answeredIds.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
+  const unanswered = Object.values(questions)
+    .filter((question) => !answeredIds.includes(question.id))
+    .sort((a, b) => b.timestamp - a.timestamp);
+
+  return {
+    userQuestionData: {
+      answered,
+      unanswered,
+    },
+  };
+}
+
+export default connect(mapStateToProps)(Home);
