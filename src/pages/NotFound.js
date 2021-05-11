@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function LeaderBoard() {
+export default function NotFound() {
     return (
         <div>
             

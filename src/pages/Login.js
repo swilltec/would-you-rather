@@ -1,51 +1,54 @@
+// Login.js
 import React, { Component } from "react";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
+import {
+  Segment,
+  Grid,
+  Header,
+  Image,
+  Loader,
+  Dimmer,
+} from "semantic-ui-react";
+import LoginForm from "../components/LoginForm";
+import bg from "../images/bg.png";
 
-export default class Login extends Component {
+export class Login extends Component {
+  state = {
+    loading: false,
+  };
+  handleLoading = () => {
+    this.setState({ loading: true });
+  };
+
   render() {
     return (
       <>
-        <Header page="login" />
-
-        <main className="login mt-5">
-          <div className="container">
-            <div class="card text-center">
-              <div class="card-header">
-                <h2>Welcome to the Would You Rather App!</h2>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  Please pick an account below to sign in
-                </h5>
-                <div className="card-logo">
-                  <i class="fas fa-question"></i>
-                </div>
-                <form className="mt-2">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">
-                      @
-                    </span>
-                    <select
-                      class="form-select"
-                      aria-label="Default select example"
-                    >
-                      <option selected>Please select a user</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-                  </div>
-
-                  <button className="btn btn-block btn-success">Sign in</button>
-                </form>
-              </div>
-              <div class="card-footer text-muted"></div>
-            </div>
-          </div>
-        </main>
-        <Footer />
+        <Segment.Group>
+          <Header as="h4" color='blue' style={{bgColor: "black"}} block attached="top" textAlign="center">
+            <Header.Content>
+              Welcome to the Would You Rather App!
+            </Header.Content>
+            <Header.Subheader>Please sign in to continue</Header.Subheader>
+          </Header>
+          <Grid padded textAlign="center">
+            <Grid.Row className="login">
+              <Grid.Column width={16}>
+                {this.state.loading === true && (
+                  <Dimmer active inverted>
+                    <Loader inverted content="Loading" />
+                  </Dimmer>
+                )}
+                <Image src={bg} size="medium" centered />
+                <br />
+                <LoginForm onLoading={this.handleLoading} />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment.Group>
       </>
     );
   }
 }
+
+
+
+export default Login;
