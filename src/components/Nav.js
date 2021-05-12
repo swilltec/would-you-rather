@@ -12,7 +12,7 @@ import {
 import { setAuthUser } from '../actions';
 
 class Nav extends Component {
-  handleLogout = e => {
+  logout = e => {
     e.preventDefault();
     this.props.setAuthUser(null);
   };
@@ -24,7 +24,7 @@ class Nav extends Component {
       <Container>
         <Responsive as={Menu} minWidth={651} pointing secondary>
           <Menu.Item name="home" as={NavLink} to="/" exact />
-          <Menu.Item name="new poll" as={NavLink} to="/add" />
+          <Menu.Item name="new poll" as={NavLink} to="/create-question" />
           <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
           <Menu.Menu position="right">
             <Menu.Item>
@@ -33,7 +33,7 @@ class Nav extends Component {
                   src={users[authUser].avatarURL}
                   avatar
                   spaced="right"
-                  verticalAlign="bottom"
+                  verticalAlign="center"
                 />
                 {users[authUser].name}
               </span>
@@ -46,7 +46,7 @@ class Nav extends Component {
                 compact
                 icon="log out"
                 size="mini"
-                onClick={this.handleLogout}
+                onClick={this.logout}
               />
             </Menu.Item>
           </Menu.Menu>
@@ -71,7 +71,7 @@ class Nav extends Component {
                   compact
                   icon="log out"
                   size="mini"
-                  onClick={this.handleLogout}
+                  onClick={this.logout}
                 />
               </Grid.Column>
             </Grid.Row>
@@ -79,7 +79,7 @@ class Nav extends Component {
               <Grid.Column width={16}>
                 <Menu pointing secondary widths={3}>
                   <Menu.Item name="home" as={NavLink} to="/" exact />
-                  <Menu.Item name="new poll" as={NavLink} to="/add" />
+                  <Menu.Item name="new poll" as={NavLink} to="/create-question" />
                   <Menu.Item
                     name="leader board"
                     as={NavLink}
@@ -109,7 +109,7 @@ class Nav extends Component {
                   icon="log out"
                   size="mini"
                   floated="right"
-                  onClick={this.handleLogout}
+                  onClick={this.logout}
                 />
               </Grid.Column>
             </Grid.Row>
@@ -117,7 +117,7 @@ class Nav extends Component {
               <Grid.Column>
                 <Menu pointing secondary widths={3}>
                   <Menu.Item name="home" as={NavLink} to="/" exact />
-                  <Menu.Item name="new poll" as={NavLink} to="/add" />
+                  <Menu.Item name="new poll" as={NavLink} to="/create-question" />
                   <Menu.Item
                     name="leader board"
                     as={NavLink}

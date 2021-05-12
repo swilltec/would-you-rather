@@ -1,15 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import CreateQuestion from "./pages/CreateQuestion";
+import CreatePoll from "./pages/CreatePoll";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Poll from "./pages/Poll";
 import MainGrid from "./components/MainGrid";
 import { connect } from "react-redux";
 import { initializeData } from "./actions/initializeData";
 import LeaderBoard from "./pages/LeaderBoard";
 import NotFound from "./pages/NotFound";
 import Nav from "./components/Nav";
+import UserCard  from "./components/UserCard";
+
+
 
 class App extends React.Component {
   componentDidMount() {
@@ -32,8 +34,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/questions/bad_id" component={NotFound} />
-          <Route path="/questions/:question_id" component={Poll} />
-          <Route path="/create-question" component={CreateQuestion} />
+          <Route path="/questions/:question_id" component={UserCard} />
+          <Route path="/create-question" component={CreatePoll} />
           <Route path="/leaderboard" component={LeaderBoard} />
           <Route component={NotFound} />
         </Switch>

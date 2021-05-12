@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import { Header, Button } from "semantic-ui-react";
 
-export class QuestionCard extends React.Component {
+class PollPreview extends React.Component {
   state = {
     viewQuestion: false,
   };
@@ -15,8 +15,9 @@ export class QuestionCard extends React.Component {
   };
 
   render() {
-    const { question, unanswered, color } = this.props;
-
+    const { question, unanswered } = this.props;
+    
+    const buttonColor = unanswered === true ? "blue" : "red";
     if (this.state.viewQuestion === true) {
       return <Redirect push to={`/questions/${question.id}`} />;
     }
@@ -31,7 +32,7 @@ export class QuestionCard extends React.Component {
           or...
         </p>
         <Button
-          color={color}
+          color={buttonColor}
           size="big"
           fluid
           onClick={this.buttonClick}
@@ -48,4 +49,4 @@ export class QuestionCard extends React.Component {
   };
 }
 
-export default QuestionCard;
+export default PollPreview;

@@ -14,11 +14,11 @@ import {
     );
   }
   
-  export function saveQuestion(info) {
-    return _saveQuestion(info);
+  export function saveQuestion(question) {
+    return _saveQuestion(question);
   }
-  
-  export function saveQuestionAnswer(info) {
-    return _saveQuestionAnswer(info);
+      
+  export function saveQuestionAnswer(authUser, qid, answer) {
+    const authedUser = authUser
+    return _saveQuestionAnswer({ authedUser, qid, answer });
   }
-  

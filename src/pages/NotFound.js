@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { Container, Header } from 'semantic-ui-react';
 
-export default function NotFound() {
+export class NotFound extends Component {
+  render() {
     return (
-        <div>
-            
-        </div>
-    )
+      <Container textAlign="center">
+        <Header as="h3">No Match 404 Error</Header>
+        <p>Nothing to see here. Please use the menu to try again.</p>
+      </Container>
+    );
+  }
 }
+
+export default NotFound;

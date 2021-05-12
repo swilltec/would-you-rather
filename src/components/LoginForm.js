@@ -42,8 +42,8 @@ class LoginForm extends Component {
 
     return (
       <Form onSubmit={this.handleSubmit}>
-        <Header as="h2" color="green">
-          Sign In
+        <Header as="h3">
+          Please select an account below
         </Header>
         <Form.Dropdown
           placeholder="Select a Friend"

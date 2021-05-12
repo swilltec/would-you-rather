@@ -6,23 +6,23 @@ import UserCard from "../components/UserCard";
 
 export class Home extends Component {
   render() {
-    const { userQuestionData } = this.props;
+    const { userAndQuestionData } = this.props;
 
-    return <Tab panes={panes({ userQuestionData })} className="tab" />;
+    return <Tab panes={panes({ userAndQuestionData })} className="tab" />;
   }
   static propTypes = {
-    userQuestionData: PropTypes.object.isRequired,
+    userAndQuestionData: PropTypes.object.isRequired,
   };
 }
 
 const panes = props => {
-  const { userQuestionData } = props;
+  const { userAndQuestionData } = props;
   return [
     {
-      menuItem: 'Unanswered',
+      menuItem: 'Aanswered',
       render: () => (
         <Tab.Pane>
-          {userQuestionData.answered.map(question => (
+          {userAndQuestionData.unanswered.map(question => (
             <UserCard
               key={question.id}
               question_id={question.id}
@@ -33,10 +33,10 @@ const panes = props => {
       )
     },
     {
-      menuItem: 'Answered',
+      menuItem: 'Unanswered',
       render: () => (
         <Tab.Pane>
-          {userQuestionData.unanswered.map(question => (
+          {userAndQuestionData.unanswered.map(question => (
             <UserCard
               key={question.id}
               question_id={question.id}
@@ -59,7 +59,7 @@ function mapStateToProps({ authUser, users, questions }) {
     .sort((a, b) => b.timestamp - a.timestamp);
 
   return {
-    userQuestionData: {
+    userAndQuestionData: {
       answered,
       unanswered,
     },
