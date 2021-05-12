@@ -28,8 +28,8 @@ The user will be able to navigate to the leaderboard, to a specific question, an
 
 ## To Get Started:
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+* install all project dependencies with `yarn install`
+* start the development server with `yarn start`
 
 The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user will have an avatar, so you’ll need to add the path to each user’s avatar.
 

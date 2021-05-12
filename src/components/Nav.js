@@ -1,18 +1,17 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Menu,
-  Responsive,
   Image,
-  Grid,
   Button,
   Container
 } from 'semantic-ui-react';
+
 import { setAuthUser } from '../actions';
 
 class Nav extends Component {
-  logout = e => {
+  handleLogout = e => {
     e.preventDefault();
     this.props.setAuthUser(null);
   };
@@ -22,7 +21,7 @@ class Nav extends Component {
 
     return (
       <Container>
-        <Responsive as={Menu} minWidth={651} pointing secondary>
+        <Menu stackable pointing secondary>
           <Menu.Item name="home" as={NavLink} to="/" exact />
           <Menu.Item name="new poll" as={NavLink} to="/create-question" />
           <Menu.Item name="leader board" as={NavLink} to="/leaderboard" />
@@ -33,7 +32,7 @@ class Nav extends Component {
                   src={users[authUser].avatarURL}
                   avatar
                   spaced="right"
-                  verticalAlign="center"
+                  verticalAlign="bottom"
                 />
                 {users[authUser].name}
               </span>
@@ -46,89 +45,12 @@ class Nav extends Component {
                 compact
                 icon="log out"
                 size="mini"
-                onClick={this.logout}
+                onClick={this.handleLogout}
               />
             </Menu.Item>
           </Menu.Menu>
-        </Responsive>
-        <Responsive as={Fragment} minWidth={375} maxWidth={650}>
-          <Grid columns={2} padded="vertically">
-            <Grid.Row>
-              <Grid.Column>
-                <Image
-                  src={users[authUser].avatarURL}
-                  avatar
-                  spaced="right"
-                  verticalAlign="bottom"
-                />
-                {users[authUser].name}
-              </Grid.Column>
-              <Grid.Column verticalAlign="bottom" textAlign="right">
-                <Button
-                  content="Logout"
-                  labelPosition="right"
-                  basic
-                  compact
-                  icon="log out"
-                  size="mini"
-                  onClick={this.logout}
-                />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column width={16}>
-                <Menu pointing secondary widths={3}>
-                  <Menu.Item name="home" as={NavLink} to="/" exact />
-                  <Menu.Item name="new poll" as={NavLink} to="/create-question" />
-                  <Menu.Item
-                    name="leader board"
-                    as={NavLink}
-                    to="/leaderboard"
-                  />
-                </Menu>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Responsive>
-        <Responsive as={Fragment} maxWidth={374}>
-          <Grid padded="vertically" columns={1}>
-            <Grid.Row>
-              <Grid.Column>
-                <Image
-                  src={users[authUser].avatarURL}
-                  avatar
-                  spaced="right"
-                  verticalAlign="bottom"
-                />
-                {users[authUser].name}
-                <Button
-                  content="Logout"
-                  labelPosition="right"
-                  basic
-                  compact
-                  icon="log out"
-                  size="mini"
-                  floated="right"
-                  onClick={this.logout}
-                />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Menu pointing secondary widths={3}>
-                  <Menu.Item name="home" as={NavLink} to="/" exact />
-                  <Menu.Item name="new poll" as={NavLink} to="/create-question" />
-                  <Menu.Item
-                    name="leader board"
-                    as={NavLink}
-                    to="/leaderboard"
-                  />
-                </Menu>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Responsive>
-      </Container>
+        </Menu>
+       </Container>
     );
   }
 }
