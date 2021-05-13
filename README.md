@@ -1,6 +1,6 @@
 # Would You Rather Project
 
-"Would You Rather?"  udacity Project, is a user preference game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules.
+Would You Rather udacity project is a user preference game. The game goes like this: A user is asked a question in the form: “Would you rather [option A] or [option B] ?”. Answering "neither" or "both" is against the rules.
 
 In this game, users can answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
@@ -9,11 +9,11 @@ In this game, users can answer questions, see which questions they haven’t ans
 
 The gamer can login using an existing user. The application will work correctly regardless of which user is selected. Once the user logs in, the home page will be shown.
 
-The authenticated user cusename and image are displayed at the navbar of the page to display. If gamer tries to navigate anywhere by entering the address in the address bar, the user is asked to sign in and then the requested page is shown. The application allows the user to log out and log back in.
+The authenticated user username and image are displayed at the navbar of the page to display. If gamer tries to navigate anywhere by entering the address in the address bar, the user is asked to sign in and then the requested page is shown. The application allows the user to log out and log back in.
 
 Once the user logs in, the user will be able to toggle between his/her answered and unanswered polls on the home page, which is located at the root. The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom). The unanswered questions are shown by default.
 
-It would be no fun to vote in polls if we couldn’t post our own questions! The form for posting new polling questions will be available at the /add route. The application will show the text “Would You Rather” and have a form for creating two options. Upon submitting the form, a new poll will be created, the user will be taken to the home page, and the new polling question will appear in the correct category on the home page.
+It would be no fun to vote in polls if we couldn’t post our own questions! The form for posting new polling questions will be available at the /add route. The application will show the text "Would You Rather" and have a form for creating two options. Upon submitting the form, a new poll will be created, the user will be taken to the home page, and the new polling question will appear in the correct category on the home page.
 
 But how can we know how many questions each user has asked and answered? Let’s get some healthy competition going here! The application will have a leaderboard that’s available at the /leaderboard route. Each entry on the leaderboard contains the following:
 
